@@ -165,6 +165,7 @@ DISPLAY=:0 sudo -u $U_NAME purple-remote "setstatus?message=$MESSAGE"
 DISPLAY=:0 sudo -u $U_NAME notify-send -u low -t 3000 "Pidgin-Status" "$MESSAGE"
 
 # update your Skype-Status
+if [ $(ps -aux | grep Skype | wc -l) -gt 1 ] ; then
 DISPLAY=:0 sudo -u $U_NAME /usr/bin/python2 << END
 import Skype4Py
 skype = Skype4Py.Skype()
@@ -172,6 +173,7 @@ skype.FriendlyName = 'location_query_service'
 skype.Attach()
 skype.CurrentUserProfile.MoodText = '$MESSAGE'
 END
+fi
 
 # leave some debug information behind
 if [ $DEBUG -ge 1 ] ; then
