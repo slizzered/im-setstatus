@@ -156,7 +156,7 @@ fi
 
 # log some information into Dropbox (in case laptop gets stolen)
 sudo -u $U_NAME mkdir $U_HOME/Dropbox/Location/ 2>/dev/null
-sudo -u $U_NAME echo "$LAT,$LNG,$ESSID,$MAC" | sudo -u carli tee -a "$U_HOME/Dropbox/Location/$(date +%F\ %T).txt"
+sudo -u $U_NAME echo "$LAT,$LNG,$ESSID,$MAC" | sudo -u $U_NAME tee -a "$U_HOME/Dropbox/Location/$(date +%F\ %T).txt"
 
 #Notify the user, what's going on
 DISPLAY=:0 sudo -u $U_NAME purple-remote "setstatus?message=$MESSAGE"
